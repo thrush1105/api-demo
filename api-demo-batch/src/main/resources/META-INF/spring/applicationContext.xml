@@ -1,15 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:context="http://www.springframework.org/schema/context"
-    xsi:schemaLocation="
+    xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="
         http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
     ">
 
     <import resource="classpath:/META-INF/spring/api-demo-domain.xml" />
 
-    <context:property-placeholder
-        location="classpath*:/META-INF/spring/*.properties" />
+    <context:property-placeholder location="classpath*:/META-INF/spring/*.properties" />
+
+    <!-- Exception Code Resolver. -->
+    <bean id="exceptionCodeResolver" class="org.terasoluna.gfw.common.exception.SimpleMappingExceptionCodeResolver">
+        <!-- Setting and Customization by project. -->
+        <property name="exceptionMappings">
+            <map>
+                <entry key="ResourceNotFoundException" value="e.xx.fw.5001" />
+                <entry key="InvalidTransactionTokenException" value="e.xx.fw.7001" />
+                <entry key="BusinessException" value="e.xx.fw.8001" />
+                <entry key=".DataAccessException" value="e.xx.fw.9002" />
+            </map>
+        </property>
+        <property name="defaultExceptionCode" value="e.xx.fw.9001" />
+    </bean>
+
+    <!-- Exception Logger. -->
+    <bean id="exceptionLogger" class="org.terasoluna.gfw.common.exception.ExceptionLogger">
+        <property name="exceptionCodeResolver" ref="exceptionCodeResolver" />
+    </bean>
 
 </beans>
