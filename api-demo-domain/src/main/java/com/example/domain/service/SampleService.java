@@ -31,6 +31,7 @@ public class SampleService {
                 outputCsvRow(sample, writer);
             }
         }
+        writer.flush();
     }
 
     private void outputCsvRow(Sample sample, PrintWriter writer) {

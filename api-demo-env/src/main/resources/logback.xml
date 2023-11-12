@@ -38,7 +38,7 @@
     </logger>
 
     <logger name="com.example.domain.repository">
-        <level value="trace" />
+        <level value="debug" />
     </logger>
 
     <!-- TERASOLUNA -->

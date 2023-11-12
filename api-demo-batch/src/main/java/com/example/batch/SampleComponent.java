@@ -13,7 +13,7 @@ public class SampleComponent {
         this.sampleService = sampleService;
     }
 
-    public void run() {
+    public void hello() {
         System.out.println(sampleService.hello());
     }
 
