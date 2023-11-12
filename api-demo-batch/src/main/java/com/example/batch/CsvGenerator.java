@@ -14,7 +14,7 @@ import com.example.domain.service.SampleService;
 public class CsvGenerator {
 
     public static void main(String[] args) {
-        try (GenericApplicationContext applicationContext = new AnnotationConfigApplicationContext(App.class)) {
+        try (GenericApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class)) {
             String since = args.length > 0 ? args[0] : null;
             String until = args.length > 1 ? args[1] : null;
 

@@ -1,10 +1,11 @@
 package com.example.batch;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import com.example.domain.model.User;
 import com.example.domain.service.UserService;
-import java.util.List;
 
 @Component
 public class UserComponent {
@@ -15,7 +16,7 @@ public class UserComponent {
         this.userService = userService;
     }
 
-    public void run() {
+    public void showUsers() {
         List<User> users = userService.findAll();
         for (User user : users) {
             System.out.println(user);
