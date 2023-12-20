@@ -13,8 +13,6 @@ public class HelloApp {
         try (GenericApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class)) {
             SampleComponent sampleComponent = applicationContext.getBean(SampleComponent.class);
             sampleComponent.hello();
-            UserComponent userComponent = applicationContext.getBean(UserComponent.class);
-            userComponent.showUsers();
         }
     }
 
